@@ -45,9 +45,17 @@ class PersistedConnectionEntityManager extends EntityManagerDecorator
     {
         $connection = $this->wrapped->getConnection();
 
-        if (false === $connection->ping()) {
-            $connection->close();
-            $connection->connect();
+        if ($connection->isConnected()) {
+            try {
+                $native = $connection->getNativeConnection();
+                if (method_exists($native, 'ping') && !$native->ping()) {
+                    $connection->close();
+                    $connection->connect();
+                }
+            } catch (\Throwable $e) {
+                $connection->close();
+                $connection->connect();
+            }
         }
     }
 }

@@ -120,7 +120,11 @@ class FamilyController
      */
     public function indexAction(Request $request)
     {
-        $options = $request->query->get('options', ['limit' => 20, 'expanded' => 1]);
+        $options = $request->query->all('options');
+        if (empty($options)) {
+            $options = ['limit' => 20, 'expanded' => 1];
+        }
+
         $expanded = !isset($options['expanded']) || $options['expanded'] === 1;
 
         if ($request->query->has('identifiers')) {

@@ -1,7 +1,4 @@
 {
-    "akeneo/oauth-server-bundle": {
-        "version": "1.7.x-dev"
-    },
     "akeneo/php-coupling-detector": {
         "version": "0.3.1"
     },
@@ -212,9 +209,6 @@
             "version": "2.0",
             "ref": "370bcf99b04c0dfd0b545745aad622d757af5e1b"
         }
-    },
-    "friendsofsymfony/oauth2-php": {
-        "version": "1.2.3"
     },
     "friendsofsymfony/rest-bundle": {
         "version": "2.2",
@@ -564,9 +558,6 @@
     "symfony/acl-bundle": {
         "version": "v1.0.0"
     },
-    "symfony/amqp-messenger": {
-        "version": "v5.3.7"
-    },
     "symfony/asset": {
         "version": "v4.3.4"
     },
@@ -763,9 +754,6 @@
     "symfony/polyfill-php72": {
         "version": "v1.12.0"
     },
-    "symfony/polyfill-php73": {
-        "version": "v1.12.0"
-    },
     "symfony/polyfill-php80": {
         "version": "v1.17.1"
     },
@@ -783,9 +771,6 @@
     },
     "symfony/proxy-manager-bridge": {
         "version": "v4.3.4"
-    },
-    "symfony/redis-messenger": {
-        "version": "v5.3.7"
     },
     "symfony/requirements-checker": {
         "version": "1.0",
@@ -830,9 +815,6 @@
         "version": "v4.3.4"
     },
     "symfony/security-csrf": {
-        "version": "v4.3.4"
-    },
-    "symfony/security-guard": {
         "version": "v4.3.4"
     },
     "symfony/security-http": {

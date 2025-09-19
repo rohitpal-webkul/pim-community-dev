@@ -63,7 +63,7 @@ services:
         class: 'Akeneo\UserManagement\Bundle\Controller\ResetController'
         arguments:
             - '@pim_user.manager'
-            - '@session'
+            - '@request_stack'
             - '@pim_user.form.handler.reset'
             - '@security.token_storage'
             - '@pim_user.form.reset'
@@ -94,7 +94,8 @@ services:
             - '@twig'
             - '%pim_user.login_form.action_route%'
             - '%pim_user.login_form.additional_hidden_fields%'
-
+        calls:
+            - [setContainer, ['@service_container']]
 
     Akeneo\UserManagement\Bundle\Controller\Rest\FindAllProfilesController:
         public: true

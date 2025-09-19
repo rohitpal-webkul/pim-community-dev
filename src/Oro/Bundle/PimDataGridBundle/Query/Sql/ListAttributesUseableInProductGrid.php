@@ -56,7 +56,7 @@ SQL;
         $stmt->bindValue('locale', $locale, Types::STRING);
         $stmt->bindValue('search', "%$searchOnLabel%", Types::STRING);
 
-        $stmt->execute();
+        $stmt = $stmt->execute();
         $attributes = $stmt->fetchAllAssociative();
 
         $attributes = array_map(function ($attribute) {
