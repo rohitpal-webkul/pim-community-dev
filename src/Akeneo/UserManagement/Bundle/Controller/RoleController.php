@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\UnprocessableEntityHttpException;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Twig\Environment;
 
 class RoleController extends AbstractController
 {
@@ -26,6 +27,7 @@ class RoleController extends AbstractController
         private readonly AclRoleHandler $aclRoleHandler,
         private readonly TranslatorInterface $translator,
         private readonly EditRolePermissionsRoleQuery $editRolePermissionsRoleQuery,
+        private readonly Environment $twig,
     ) {
     }
 
@@ -102,9 +104,14 @@ class RoleController extends AbstractController
             $this->aclRoleHandler->reinitializeData($role);
         }
 
-        return $this->render('@PimUser/Role/update.html.twig', [
+        $content = $this->twig->render('@PimUser/Role/update.html.twig', [
             'form' => $this->aclRoleHandler->createView(),
             'privilegesConfig' => $this->container->getParameter('pim_user.privileges'),
         ]);
+
+        $response = new Response();
+        $response->setContent($content);
+
+        return $response;
     }
 }
