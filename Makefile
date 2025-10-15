@@ -78,7 +78,6 @@ pim-dev: dependencies cache assets css javascript-dev
 	php bin/console doctrine:database:drop --force --if-exists --env=dev
 	php bin/console doctrine:database:create --if-not-exists --env=dev
 	php bin/console pim:installer:db --catalog src/Akeneo/Platform/Installer/back/src/Infrastructure/Symfony/Resources/fixtures/icecat_demo_dev --env=dev
-	make admin
 
 .PHONY: pim-prod
 pim-prod: dependencies cache assets css javascript-prod
@@ -92,7 +91,7 @@ pim-prod: dependencies cache assets css javascript-prod
 ##
 .PHONY: admin
 admin:
-	php bin/console pim:user:create --admin -n -- admin admin test@example.com "John Doe" en_US --env=dev || true
+	php bin/console pim:user:create admin admin admin@example.com Super Admin en_US --admin -n --env=prod || true
 
 .PHONY: workers
 workers:
